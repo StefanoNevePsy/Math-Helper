@@ -139,7 +139,7 @@ export default function NumberLine({ currentValue, history, badgeValue, badgeCol
               {/* Tick line */}
               <div style={{ 
                 position: 'absolute',
-                bottom: '60px', // exact on the horizontal line
+                bottom: 'var(--line-bottom-offset)', // es. 60px o meno su mobile
                 left: '50%',
                 transform: 'translateX(-50%)',
                 width: 'var(--border-width)', 
@@ -167,15 +167,15 @@ export default function NumberLine({ currentValue, history, badgeValue, badgeCol
                       top: '50%',
                       left: '50%',
                       transform: 'translate(-50%, -50%)',
-                      width: '90px',
-                      height: '60px',
+                      width: 'var(--pill-w)',
+                      height: 'var(--pill-h)',
                       border: 'var(--border-width) solid var(--border-color)',
                       borderRadius: '30px', 
                       pointerEvents: 'none',
                     }} />
-                    {/* Segnali visivi -/+ sopra la linea (linea a bottom 60px) */}
-                    <div style={{ position: 'absolute', bottom: '80px', left: '-50px', color: 'var(--primary-minus)', fontSize: '3rem', fontWeight: 800 }}>−</div>
-                    <div style={{ position: 'absolute', bottom: '80px', right: '-50px', color: 'var(--primary-plus)', fontSize: '3rem', fontWeight: 800 }}>+</div>
+                    {/* Segnali visivi -/+ sopra la linea */}
+                    <div style={{ position: 'absolute', bottom: 'calc(var(--line-bottom-offset) + 20px)', left: '-50px', color: 'var(--primary-minus)', fontSize: 'var(--btn-fs-large)', fontWeight: 800 }}>−</div>
+                    <div style={{ position: 'absolute', bottom: 'calc(var(--line-bottom-offset) + 20px)', right: '-50px', color: 'var(--primary-plus)', fontSize: 'var(--btn-fs-large)', fontWeight: 800 }}>+</div>
                   </>
                 )}
               </div>

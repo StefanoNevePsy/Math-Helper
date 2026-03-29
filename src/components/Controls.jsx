@@ -36,12 +36,12 @@ export default function Controls({ onStepLeft, onStepRight, operation, stepSize,
           style={{
              flex: 1, 
              maxWidth: '300px',
-             height: '80px', 
+             height: 'var(--btn-h-large)', 
              pointerEvents: 'auto',
              background: 'var(--primary-minus)',
           }}
         >
-          <span style={{ fontSize: '3rem', marginTop: '-10px' }}>−</span>
+          <span style={{ fontSize: 'var(--btn-fs-large)', marginTop: '-5px' }}>−</span>
           {isMultDiv && <span style={{ fontSize: '1.2rem', marginLeft: '10px' }}>{stepSize}</span>}
         </button>
 
@@ -53,12 +53,12 @@ export default function Controls({ onStepLeft, onStepRight, operation, stepSize,
           style={{
              flex: 1, 
              maxWidth: '300px',
-             height: '80px', 
+             height: 'var(--btn-h-large)', 
              pointerEvents: 'auto',
              background: 'var(--primary-plus)',
           }}
         >
-          <span style={{ fontSize: '3rem', marginTop: '-5px' }}>+</span>
+          <span style={{ fontSize: 'var(--btn-fs-large)', marginTop: '-5px' }}>+</span>
           {isMultDiv && <span style={{ fontSize: '1.2rem', marginLeft: '10px' }}>{stepSize}</span>}
         </button>
       </div>
@@ -69,7 +69,7 @@ export default function Controls({ onStepLeft, onStepRight, operation, stepSize,
         style={{
           pointerEvents: showCommit ? 'auto' : 'none',
           opacity: showCommit ? 1 : 0.3,
-          padding: '12px 60px',
+          padding: 'var(--fatto-btn-p)',
           fontSize: '1.5rem',
           background: '#89E894'
         }}

@@ -81,7 +81,7 @@ export default function MatrixMode({ operation, resetApp }) {
       
       {/* Visualizzazione del contesto in alto */}
       <div style={{ textAlign: 'center', marginTop: '10vh' }}>
-        <h1 style={{ fontSize: '4rem', fontFamily: 'var(--font-num)', margin: 0 }}>
+        <h1 style={{ fontSize: 'var(--title-fs)', fontFamily: 'var(--font-num)', margin: 0 }}>
           {renderHeader()}
         </h1>
         <p style={{ fontSize: '1.2rem', fontFamily: 'var(--font-main)', margin: '10px 0', color: 'var(--border-color)', opacity: 0.6 }}>
@@ -118,7 +118,7 @@ export default function MatrixMode({ operation, resetApp }) {
         {/* Mostra il risultato grande a fine operazione */}
         {phase === 3 && (
            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
-             <div style={{ padding: '20px 40px', background: 'white', border: 'var(--border-width) solid var(--border-color)', borderRadius: '20px', fontSize: '3rem', fontWeight: 800, boxShadow: '6px 6px 0px 0px var(--border-color)', fontFamily: 'var(--font-num)' }}>
+             <div style={{ padding: 'var(--fatto-btn-p)', background: 'white', border: 'var(--border-width) solid var(--border-color)', borderRadius: '20px', fontSize: 'var(--btn-fs-large)', fontWeight: 800, boxShadow: '6px 6px 0px 0px var(--border-color)', fontFamily: 'var(--font-num)', textAlign: 'center' }}>
                 {!isDiv ? `${p1} × ${p2} = ${p1 * p2}` : `${p1} ÷ ${p2} = ${Math.floor(p1/p2)}` + (p1 % p2 ? ` (Resto ${p1 % p2})` : '')}
              </div>
            </div>
@@ -144,8 +144,8 @@ export default function MatrixMode({ operation, resetApp }) {
               className="neo-btn" 
               onClick={handleMinus}
               style={{
-                 flex: 1, maxWidth: '300px', height: '80px', pointerEvents: 'auto',
-                 background: 'var(--primary-minus)', fontSize: '3rem'
+                 flex: 1, maxWidth: '300px', height: 'var(--btn-h-large)', pointerEvents: 'auto',
+                 background: 'var(--primary-minus)', fontSize: 'var(--btn-fs-large)'
               }}
             >−</button>
 
@@ -153,8 +153,8 @@ export default function MatrixMode({ operation, resetApp }) {
               className="neo-btn" 
               onClick={handlePlus}
               style={{
-                 flex: 1, maxWidth: '300px', height: '80px', pointerEvents: 'auto',
-                 background: 'var(--primary-plus)', fontSize: '3rem'
+                 flex: 1, maxWidth: '300px', height: 'var(--btn-h-large)', pointerEvents: 'auto',
+                 background: 'var(--primary-plus)', fontSize: 'var(--btn-fs-large)'
               }}
             >+</button>
           </div>
@@ -165,7 +165,7 @@ export default function MatrixMode({ operation, resetApp }) {
             style={{
               pointerEvents: 'auto',
               opacity: 1,
-              padding: '12px 60px', fontSize: '1.5rem', 
+              padding: 'var(--fatto-btn-p)', fontSize: '1.5rem', 
               background: phase < 3 ? '#89E894' : '#F8A1A4'
             }}
           >

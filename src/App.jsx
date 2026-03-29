@@ -181,7 +181,7 @@ export default function App() {
         </div>
       )}
       <div style={{ textAlign: 'center', marginBottom: '20px', marginTop: '-10vh' }}>
-         <h1 style={{ fontSize: '4rem', fontFamily: 'var(--font-num)', margin: 0 }}>
+         <h1 style={{ fontSize: 'var(--title-fs)', fontFamily: 'var(--font-num)', margin: 0 }}>
            {currentValue}
          </h1>
       </div>
@@ -209,7 +209,7 @@ export default function App() {
                  <button 
                    className="neo-btn" 
                    onClick={startOperation}
-                   style={{ padding: '20px 40px', fontSize: '2rem', background: '#89E894' }}
+                   style={{ padding: 'var(--fatto-btn-p)', fontSize: '1.5rem', background: '#89E894' }}
                  >
                    INIZIA DA {currentValue}
                  </button>

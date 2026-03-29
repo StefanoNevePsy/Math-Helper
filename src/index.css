@@ -12,6 +12,37 @@
   --shadow-offset: 6px;
   --font-main: 'Fredoka', sans-serif;
   --font-num: 'JetBrains Mono', monospace;
+
+  /* Responsive variables */
+  --btn-h-large: 80px;
+  --btn-fs-large: 3rem;
+  --title-fs: 4rem;
+  --line-bottom-offset: 60px;
+  --pill-h: 60px;
+  --pill-w: 90px;
+  --fatto-btn-p: 12px 60px;
+}
+
+/* Ottimizzazioni per schermi piccoli e landscape */
+@media (max-height: 600px) {
+  :root {
+    --btn-h-large: 55px;
+    --btn-fs-large: 2rem;
+    --title-fs: 3rem;
+    --line-bottom-offset: 35px;
+    --pill-h: 40px;
+    --pill-w: 65px;
+    --fatto-btn-p: 6px 30px;
+    --shadow-offset: 4px;
+    --border-width: 3px;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    --btn-fs-large: 2rem;
+    --title-fs: 3.5rem;
+    --fatto-btn-p: 8px 40px;
+  }
 }
 
 * {
