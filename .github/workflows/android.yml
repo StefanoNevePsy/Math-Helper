@@ -33,8 +33,8 @@ jobs:
       - name: Prepare Assets for Capacitor (Monet & Adaptive)
         run: |
           mkdir -p assets
-          # Install librsvg for high quality svg to png conversion
-          sudo apt-get install -y librsvg2-bin
+          # Install librsvg for high quality svg to png conversion & imagemagick for canvas
+          sudo apt-get install -y librsvg2-bin imagemagick
           rsvg-convert -w 1024 -h 1024 public/icon.svg -o assets/icon.png
           # Usa l'SVG direttamente come logo Monocromatico (Monet Support)
           cp public/icon.svg assets/icon-monochrome.svg
