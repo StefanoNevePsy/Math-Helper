@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=JetBrains+Mono:wght@800&display=swap');
+
+:root {
+  --bg-color: #FDFBF7; /* Caldo color panna/grigio chiarissimo */
+  --border-color: #0F0F0F; /* Nero netto */
+  --border-width: 4px;
+  
+  --primary-minus: #8FC1E3; /* Azzurro desaturato - freddo */
+  --primary-plus: #F7B84B; /* Giallo senape/arancione tenue - caldo */
+  --badge-bg: #89E894; /* Verde pallido per i badge/feedback positivi */
+  
+  --shadow-offset: 6px;
+  --font-main: 'Fredoka', sans-serif;
+  --font-num: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--border-color);
+  font-family: var(--font-main);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none; /* Disable native scroll/zoom totally */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Reset buttons */
+button {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+.neo-btn {
+  background: #FFF;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--border-color);
+  border-radius: 12px;
+  transition: transform 0.05s, box-shadow 0.05s;
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--border-color);
+  text-transform: uppercase;
+}
+
+.neo-btn:active {
+  transform: translate(calc(var(--shadow-offset) / 2), calc(var(--shadow-offset) / 2));
+  box-shadow: calc(var(--shadow-offset) / 2) calc(var(--shadow-offset) / 2) 0px 0px var(--border-color);
+}
+
+/* Number line specific */
+.number-font {
+  font-family: var(--font-num);
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+/* Utility to hide things visually but keep accessible if needed (though we rely on visual) */
+.visually-hidden {
+  display: none;
+}
+
+.arc-path {
+  fill: none;
+  stroke: var(--border-color);
+  stroke-width: var(--border-width);
+  stroke-linecap: round;
+  /* Dash offset animation */
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawArc 0.3s ease-out forwards;
+}
+
+@keyframes drawArc {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.arc-arrow {
+  fill: var(--border-color);
+  opacity: 0;
+  animation: fadeIn 0.1s ease-out 0.2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
