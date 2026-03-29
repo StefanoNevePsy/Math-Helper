@@ -1,0 +1,59 @@
+name: Build Android APK (Capacitor)
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Web App
+        run: npm run build
+
+      - name: Prepare Assets for Capacitor (Monet & Adaptive)
+        run: |
+          mkdir -p assets
+          # Install librsvg for high quality svg to png conversion
+          sudo apt-get install -y librsvg2-bin
+          rsvg-convert -w 1024 -h 1024 public/icon.svg -o assets/icon.png
+          # Usa l'SVG direttamente come logo Monocromatico (Monet Support)
+          cp public/icon.svg assets/icon-monochrome.svg
+          # Crea sfondi e foreground
+          rsvg-convert -w 1024 -h 1024 public/icon.svg -o assets/icon-foreground.png
+          convert -size 1024x1024 canvas:"#FDFBF7" assets/icon-background.png
+          
+      - name: Generate Native Icons
+        run: npx capacitor-assets generate --android
+
+      - name: Sync Capacitor Android
+        run: npx cap sync android
+
+      - name: Build Debug APK
+        working-directory: ./android
+        run: ./gradlew assembleDebug
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Math-Helper-Android-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
