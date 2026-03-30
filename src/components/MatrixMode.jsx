@@ -80,7 +80,7 @@ export default function MatrixMode({ operation, resetApp }) {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', position: 'relative' }}>
       
       {/* Visualizzazione del contesto in alto */}
-      <div style={{ textAlign: 'center', marginTop: '10vh' }}>
+      <div style={{ textAlign: 'center', marginTop: '10vh', flexShrink: 0 }}>
         <h1 style={{ fontSize: 'var(--title-fs)', fontFamily: 'var(--font-num)', margin: 0 }}>
           {renderHeader()}
         </h1>
@@ -90,7 +90,7 @@ export default function MatrixMode({ operation, resetApp }) {
       </div>
 
       {/* Area della matrice */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignContent: 'flex-start', justifyContent: 'center', gap: '20px', paddingTop: '20px', overflowY: 'auto', paddingBottom: '160px' }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignContent: 'flex-start', justifyContent: 'center', gap: '20px', padding: '20px', overflowY: 'auto' }}>
         
         {rowsToRender.map((dotsInRow, rIdx) => (
           <div key={`row-${rIdx}`} style={{ 
@@ -128,15 +128,15 @@ export default function MatrixMode({ operation, resetApp }) {
 
       {/* Controlli specifici per MatrixMode in basso */}
       <div style={{
-          position: 'absolute',
-          bottom: '3vh',
+          flexShrink: 0,
           width: '100%',
-          padding: '0 20px',
+          padding: '20px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           gap: '20px',
-          pointerEvents: 'none'
+          background: 'var(--bg-color)',
+          paddingBottom: 'max(3vh, 20px)'
         }}>
           
           <div style={{ display: 'flex', width: '100%', gap: '20px', justifyContent: 'center' }}>
