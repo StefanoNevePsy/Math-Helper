@@ -5,6 +5,9 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-android:
     runs-on: ubuntu-latest
@@ -59,3 +62,10 @@ jobs:
         with:
           name: Math-Helper-Android-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Publish to GitHub Releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="v1.${{ github.run_number }}"
+          gh release create $VERSION android/app/build/outputs/apk/debug/app-debug.apk --title "Math Helper $VERSION" --notes "Nuova release automatica: $VERSION"
