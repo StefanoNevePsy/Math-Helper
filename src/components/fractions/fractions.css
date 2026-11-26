@@ -360,6 +360,67 @@
   background: var(--badge-bg);
 }
 
+.frac-mult-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.frac-toggle-btn {
+  padding: 6px 14px;
+  font-size: 0.92rem;
+  font-family: var(--font-main);
+  text-transform: none;
+  border-width: 3px;
+  box-shadow: 3px 3px 0px 0px var(--border-color);
+  background: #ffffff;
+}
+
+.frac-toggle-btn.is-on {
+  background: #dff3ff;
+}
+
+.frac-toggle-btn--sm {
+  padding: 4px 10px;
+  font-size: 0.82rem;
+  border-width: 2.5px;
+  box-shadow: 2px 2px 0px 0px var(--border-color);
+}
+
+.frac-target-den-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding-top: 12px;
+  border-top: 2.5px dashed rgba(15, 15, 15, 0.22);
+}
+
+.frac-auto-num-pill {
+  font-size: 0.92rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--border-color);
+  background: #eef8ef;
+}
+
+.frac-suggest-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.frac-step-header--between {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 .frac-eq-formula {
   display: flex;
   align-items: center;
