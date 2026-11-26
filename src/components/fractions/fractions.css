@@ -1,0 +1,688 @@
+.frac-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--bg-color);
+  color: var(--border-color);
+  overflow: hidden;
+}
+
+/* Header with 4 mode tabs, leaving safe space for Fullscreen (left) and OP (right) */
+.frac-header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 115px 10px 80px;
+}
+
+.frac-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.frac-tab-btn {
+  padding: 9px 18px;
+  font-size: 1.05rem;
+  text-transform: none;
+  background: #ffffff;
+  border-width: 3px;
+  box-shadow: 4px 4px 0px 0px var(--border-color);
+  letter-spacing: 0.01em;
+}
+
+.frac-tab-btn.is-active {
+  background: var(--badge-bg);
+}
+
+/* Scrollable workspace */
+.frac-workspace {
+  flex: 1;
+  overflow-y: auto;
+  touch-action: pan-y;
+  padding: 12px 24px 86px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.frac-stage {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Presets row */
+.frac-presets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.frac-preset-btn {
+  padding: 6px 14px;
+  font-size: 1rem;
+  font-family: var(--font-num);
+  text-transform: none;
+  border-width: 3px;
+  box-shadow: 3px 3px 0px 0px var(--border-color);
+  background: #ffffff;
+}
+
+.frac-preset-btn.is-active {
+  background: var(--primary-plus);
+}
+
+.frac-preset-btn--green {
+  font-family: var(--font-main);
+  background: var(--badge-bg);
+}
+
+/* Layouts */
+.frac-explore-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 310px) 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.frac-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+/* Panels */
+.frac-panel {
+  background: #ffffff;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--border-color);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.frac-panel--controls {
+  align-items: center;
+}
+
+.frac-panel--result {
+  background: #fdfef9;
+}
+
+/* Stepper */
+.frac-stepper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-color);
+  border: 3px solid var(--border-color);
+  border-radius: 16px;
+  padding: 14px 16px;
+  min-width: 190px;
+}
+
+.frac-stepper__label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.frac-stepper__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.frac-step-btn {
+  width: 44px;
+  height: 44px;
+  font-size: 1.5rem;
+  border-width: 3px;
+  box-shadow: 3px 3px 0px 0px var(--border-color);
+  background: var(--stepper-accent, var(--primary-plus));
+  border-radius: 12px;
+}
+
+.frac-step-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.frac-stepper__num,
+.frac-stepper__den {
+  font-family: var(--font-num);
+  font-size: 2rem;
+  font-weight: 800;
+  min-width: 44px;
+  text-align: center;
+  line-height: 1;
+}
+
+.frac-stepper__bar {
+  width: 112px;
+  height: 5px;
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+/* Meaning list */
+.frac-meaning-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  font-size: 0.96rem;
+  line-height: 1.35;
+}
+
+.frac-meaning-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.frac-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2.5px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+/* Summary / badges */
+.frac-summary-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.frac-reading {
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.frac-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 2.5px solid var(--border-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: var(--bg-color);
+}
+
+.frac-badge--propria {
+  background: #dff3ff;
+}
+
+.frac-badge--impropria {
+  background: #ffe8b8;
+}
+
+.frac-badge--apparente {
+  background: var(--badge-bg);
+}
+
+.frac-badge--equiv,
+.frac-badge--mixed {
+  font-family: var(--font-num);
+  background: var(--badge-bg);
+}
+
+/* Visual blocks */
+.frac-visual-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.frac-visual-caption {
+  font-size: 0.9rem;
+  font-weight: 700;
+  opacity: 0.72;
+}
+
+.frac-bars-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.frac-bars-row--compact {
+  gap: 8px;
+}
+
+.frac-unit-wrap {
+  flex: 1 1 200px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.frac-bar-svg {
+  width: 100%;
+  display: block;
+}
+
+.frac-unit-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.65;
+  text-align: center;
+}
+
+.frac-pies-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.frac-pie-svg {
+  display: block;
+}
+
+/* Stacked Fraction Notation */
+.frac-notation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.frac-notation--highlight {
+  background: var(--badge-bg);
+  border: 2.5px solid var(--border-color);
+  padding: 4px 10px !important;
+}
+
+.frac-notation__stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-num);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.frac-notation__bar {
+  width: 100%;
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+/* Equivalent tab */
+.frac-mult-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.frac-mult-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.frac-mult-btn {
+  padding: 8px 13px;
+  font-size: 1.1rem;
+  font-family: var(--font-num);
+  text-transform: none;
+  border-width: 3px;
+  box-shadow: 3px 3px 0px 0px var(--border-color);
+  background: #ffffff;
+}
+
+.frac-mult-btn.is-active {
+  background: var(--badge-bg);
+}
+
+.frac-eq-formula {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.frac-eq-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.frac-eq-op {
+  font-family: var(--font-num);
+  font-size: 0.85rem;
+  font-weight: 800;
+  background: var(--primary-plus);
+  border: 2px solid var(--border-color);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.frac-eq-equals {
+  font-family: var(--font-num);
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.frac-explain-line {
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--border-color);
+}
+
+.frac-equiv-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--bg-color);
+  border: 3px solid var(--border-color);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.frac-equiv-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.frac-equiv-tag {
+  font-family: var(--font-num);
+  font-size: 1.05rem;
+  font-weight: 800;
+  min-width: 60px;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 10px;
+  border: 2.5px solid var(--border-color);
+  background: var(--primary-plus);
+}
+
+.frac-equiv-tag--green {
+  background: var(--badge-bg);
+}
+
+.frac-equiv-bar-slot {
+  flex: 1;
+}
+
+.frac-align-note {
+  font-size: 0.92rem;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.frac-equiv-pies {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.frac-pie-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.frac-pie-label {
+  font-family: var(--font-num);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+/* Operation controls row (A [op] B) */
+.frac-op-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.frac-op-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.frac-op-btn {
+  width: 64px;
+  height: 54px;
+  font-size: 2rem;
+  border-width: 3.5px;
+  box-shadow: 4px 4px 0px 0px var(--border-color);
+  background: #ffffff;
+}
+
+.frac-op-btn.is-plus {
+  background: var(--primary-plus);
+}
+
+.frac-op-btn.is-minus {
+  background: var(--primary-minus);
+}
+
+/* Step headers */
+.frac-step-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.frac-step-header h3 {
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.frac-step-pill {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2.5px solid var(--border-color);
+  background: var(--primary-plus);
+  font-family: var(--font-num);
+  font-weight: 800;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.frac-step-pill--green {
+  background: var(--badge-bg);
+}
+
+/* Conversion list in + / - */
+.frac-conv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.frac-conv-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  background: var(--bg-color);
+  border: 2.5px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.frac-conv-math {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.frac-conv-eq {
+  font-family: var(--font-num);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+/* Result equation */
+.frac-result-equation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  background: var(--bg-color);
+  border: 2.5px solid var(--border-color);
+  border-radius: 14px;
+}
+
+.frac-big-sym {
+  font-family: var(--font-num);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.frac-simp-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.frac-mixed-note {
+  text-align: center;
+  font-size: 0.98rem;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: #eef8ef;
+  border: 2px solid var(--border-color);
+}
+
+/* Warning box for A < B subtraction */
+.frac-warning-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  padding: 18px;
+  background: #fff3f3;
+  border: 3px solid var(--border-color);
+  border-radius: 14px;
+}
+
+.frac-swap-btn {
+  padding: 10px 18px;
+  font-size: 1.05rem;
+  text-transform: none;
+  background: var(--primary-plus);
+  border-width: 3px;
+  box-shadow: 4px 4px 0px 0px var(--border-color);
+}
+
+/* Multiplication Grid & Legend */
+.frac-mul-grid-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.frac-div-measure {
+  display: flex;
+  justify-content: center;
+  padding: 8px 4px;
+}
+
+.frac-legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.frac-legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 2px solid var(--border-color);
+  background: #ffffff;
+}
+
+.frac-legend-chip--strong {
+  background: #eef8ef;
+}
+
+.frac-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 2px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 820px) {
+  .frac-explore-grid,
+  .frac-steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .frac-header {
+    padding: 72px 16px 8px 16px;
+  }
+
+  .frac-workspace {
+    padding: 10px 14px 90px 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .frac-tab-btn {
+    padding: 7px 12px;
+    font-size: 0.95rem;
+  }
+
+  .frac-op-toggle {
+    flex-direction: row;
+  }
+
+  .frac-panel {
+    padding: 14px;
+  }
+}

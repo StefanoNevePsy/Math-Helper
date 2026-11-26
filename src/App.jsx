@@ -3,6 +3,7 @@ import NumberLine from './components/NumberLine';
 import Controls from './components/Controls';
 import MatrixMode from './components/MatrixMode';
 import TallyMode from './components/TallyMode';
+import FractionMode from './components/fractions/FractionMode';
 import { playHapticAudioFeedback } from './components/AudioHaptic';
 
 export default function App() {
@@ -177,6 +178,13 @@ export default function App() {
               >
                 |||| Tally Counter
               </button>
+              <button 
+                className="neo-btn" 
+                style={{ padding: '10px', fontSize: '1.2rem', background: operation === 'FRAC' ? '#89E894' : 'white' }} 
+                onClick={() => { playHapticAudioFeedback(); setOperation('FRAC'); }}
+              >
+                ½ Frazioni
+              </button>
            </div>
            
            <button 
@@ -255,6 +263,13 @@ export default function App() {
       {operation === 'TALLY' && (
          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 50, background: 'var(--bg-color)' }}>
             <TallyMode key={`tally-${resetKey}`} resetApp={resetAll} />
+         </div>
+      )}
+
+      {/* Ramo per: Frazioni */}
+      {operation === 'FRAC' && (
+         <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 50, background: 'var(--bg-color)' }}>
+            <FractionMode key={`frac-${resetKey}`} resetApp={resetAll} />
          </div>
       )}
 
