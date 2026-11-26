@@ -227,19 +227,18 @@ export default function FractionMode() {
               </button>
             );
           })}
-          {simp.factor > 1 && n > 0 && (
-            <button
-              type="button"
-              className="neo-btn frac-preset-btn frac-preset-btn--green"
-              onClick={() => {
-                playHapticAudioFeedback();
-                setEqBase({ n: simp.n, d: simp.d });
-                setEqTargetD(d);
-              }}
-            >
-              Semplifica (÷{simp.factor})
-            </button>
-          )}
+          <button
+            type="button"
+            disabled={!(simp.factor > 1 && n > 0)}
+            className="neo-btn frac-preset-btn frac-preset-btn--green"
+            onClick={() => {
+              playHapticAudioFeedback();
+              setEqBase({ n: simp.n, d: simp.d });
+              setEqTargetD(d);
+            }}
+          >
+            {simp.factor > 1 && n > 0 ? `Semplifica (÷${simp.factor})` : 'Già ridotta'}
+          </button>
           <button
             type="button"
             className={`neo-btn frac-toggle-btn ${showCuts ? 'is-on' : ''}`}
@@ -322,11 +321,19 @@ export default function FractionMode() {
                   +
                 </button>
               </div>
-              {isExactEquiv && (
-                <div className="frac-auto-num-pill">
-                  Numeratore calcolato: <strong>{eqN}</strong>
-                </div>
-              )}
+              <div
+                className={`frac-auto-num-pill ${isExactEquiv ? '' : 'frac-auto-num-pill--warn'}`}
+              >
+                {isExactEquiv ? (
+                  <>
+                    Numeratore calcolato: <strong>{eqN}</strong>
+                  </>
+                ) : (
+                  <>
+                    Numeratore: <strong>non intero</strong>
+                  </>
+                )}
+              </div>
             </div>
           </div>
 
@@ -411,11 +418,17 @@ export default function FractionMode() {
                     </div>
                   </div>
 
-                  {ratio > 0 && ratio < 1 && (
-                    <div className="frac-align-note">
-                      Stessa lunghezza: <strong>{Math.round(ratio * 100)}%</strong> dell’intero
-                    </div>
-                  )}
+                  <div className="frac-align-note">
+                    {ratio >= 1 ? (
+                      <>
+                        Intero completo: <strong>100%</strong>
+                      </>
+                    ) : (
+                      <>
+                        Stessa lunghezza: <strong>{Math.round(ratio * 100)}%</strong> dell’intero
+                      </>
+                    )}
+                  </div>
                 </div>
 
                 {/* Side-by-side pies */}

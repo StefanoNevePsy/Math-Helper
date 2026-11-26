@@ -42,6 +42,7 @@
 .frac-workspace {
   flex: 1;
   overflow-y: auto;
+  scrollbar-gutter: stable both-edges;
   touch-action: pan-y;
   padding: 12px 24px 86px 24px;
   display: flex;
@@ -82,6 +83,14 @@
 .frac-preset-btn--green {
   font-family: var(--font-main);
   background: var(--badge-bg);
+  min-width: 146px;
+}
+
+.frac-preset-btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+  box-shadow: none;
+  background: #efefef;
 }
 
 /* Layouts */
@@ -278,6 +287,7 @@
 
 .frac-bar-svg {
   width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -368,6 +378,7 @@
 
 .frac-toggle-btn {
   padding: 6px 14px;
+  min-width: 215px;
   font-size: 0.92rem;
   font-family: var(--font-main);
   text-transform: none;
@@ -381,6 +392,7 @@
 }
 
 .frac-toggle-btn--sm {
+  min-width: 118px;
   padding: 4px 10px;
   font-size: 0.82rem;
   border-width: 2.5px;
@@ -403,6 +415,11 @@
   border-radius: 999px;
   border: 2px solid var(--border-color);
   background: #eef8ef;
+  text-align: center;
+}
+
+.frac-auto-num-pill--warn {
+  background: #fff3f3;
 }
 
 .frac-suggest-row {
@@ -478,7 +495,8 @@
   font-family: var(--font-num);
   font-size: 1.05rem;
   font-weight: 800;
-  min-width: 60px;
+  width: 82px;
+  flex-shrink: 0;
   text-align: center;
   padding: 5px 8px;
   border-radius: 10px;
@@ -492,6 +510,12 @@
 
 .frac-equiv-bar-slot {
   flex: 1;
+  min-width: 0;
+}
+
+.frac-equiv-bar-slot .frac-unit-wrap {
+  max-width: none;
+  width: 100%;
 }
 
 .frac-align-note {

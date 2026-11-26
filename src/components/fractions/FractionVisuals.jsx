@@ -79,6 +79,8 @@ export function FractionBar({
   const safeD = Math.max(1, d);
   const totalSlotsNeeded = Math.max(n + secondCount, n + removedCount);
   const units = Math.max(minUnits, Math.ceil(totalSlotsNeeded / safeD) || 1);
+  const vbW = 320;
+  const innerW = vbW - 4;
 
   return (
     <div className={`frac-bars-row ${compact ? 'frac-bars-row--compact' : ''}`}>
@@ -87,9 +89,9 @@ export function FractionBar({
         return (
           <div key={unitIdx} className="frac-unit-wrap">
             <svg
-              viewBox={`0 0 240 ${height}`}
+              viewBox={`0 0 ${vbW} ${height}`}
               className="frac-bar-svg"
-              style={{ height: `${height}px` }}
+              preserveAspectRatio="xMinYMid meet"
               role="img"
               aria-label={`Barra unità ${unitIdx + 1}: ${n} su ${safeD}`}
             >
@@ -97,7 +99,7 @@ export function FractionBar({
               <rect
                 x="2"
                 y="2"
-                width="236"
+                width={innerW}
                 height={height - 4}
                 rx="8"
                 fill={FRAC_COLORS.empty}
@@ -107,7 +109,7 @@ export function FractionBar({
               {/* Segments */}
               {Array.from({ length: safeD }).map((__, segIdx) => {
                 const globalIdx = unitStart + segIdx;
-                const segW = 236 / safeD;
+                const segW = innerW / safeD;
                 const x = 2 + segIdx * segW;
 
                 let fill = FRAC_COLORS.empty;
@@ -224,7 +226,7 @@ export function FractionBar({
               <rect
                 x="2"
                 y="2"
-                width="236"
+                width={innerW}
                 height={height - 4}
                 rx="8"
                 fill="none"
